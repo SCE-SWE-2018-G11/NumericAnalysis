@@ -1,14 +1,11 @@
-def secant(x0, x1, n):
+def findRoots(f, range_start, range_end, iterations=10):
 	'''
-		TODO: Docstring
+		Estimates x so that f(x)=0 using secant algorithm.
 	'''
-	def f(x):
-		return x ** 3 + x - 1
-	
-    for i in range(n):
-        if f(x1) - f(x0) == 0:
-            return x1
-        x_temp = x1 - (f(x1) * (x1 - x0) * 1.0) / (f(x1) - f(x0)) #incline between 2 dots
-        x0 = x1
-        x1 = x_temp
-    return x1
+	for i in range(iterations):
+		if f(range_end) - f(range_start) == 0:
+			return range_end
+		x_temp = range_end - (f(range_end) * (range_end - range_start) * 1.0) / (f(range_end) - f(range_start))
+		range_start = range_end
+		range_end = x_temp
+	return range_end

@@ -1,12 +1,12 @@
 from math import *
 
-def NR(f, f_tag, x0):
+def findRoots(f, derivative, x0=1):
 	'''
-		TODO: Docstring
+		Estimates x so that f(x)=0 using newton-repson algorithm.
 	'''
-	eps = 1e-3
+	acceptable_error = 1e-3
 	
-    x = float(x0)
-    while abs(f(x)) > eps:
-        x = x - f(x) / f_tag(x)
-    return f(x)
+	x = float(x0)
+	while abs(f(x)) > acceptable_error:
+		x = x - f(x) / derivative(x)
+	return x
