@@ -4,6 +4,7 @@ import BisectionAlgorithm as ba
 import NewtonRepson as nr
 import SecantAlgorithm as sc
 import Functions as fun
+import Matrix as mat
 
 class Test(unittest.TestCase):
 	def test_bisection(self):
@@ -75,6 +76,36 @@ class Test(unittest.TestCase):
 		self.assertEqual(fun.coefficientsToFunction([0, 1])(5), 5)
 		self.assertEqual(fun.coefficientsToFunction([0, 2])(5), 10)
 		self.assertEqual(fun.coefficientsToFunction([1, 2])(5), 11)
+	
+	def test_matrix(self):
+		self.assertEqual(mat.Matrix(2, 2).data, [[0, 0], [0, 0]])
+		self.assertEqual((mat.Matrix(2, 2) * 2).data, [[0, 0], [0, 0]])
+		self.assertEqual((2 * mat.Matrix(2, 2)).data, [[0, 0], [0, 0]])
+		
+		matrix = mat.Matrix(2, 2)
+		matrix.setAt(0, 0, 1)
+		matrix.setAt(1, 1, 1)
+		self.assertEqual(matrix.data, [[1, 0], [0, 1]])
+		self.assertEqual((2*matrix).data, [[2, 0], [0, 2]])
+		self.assertEqual((matrix*2).data, [[2, 0], [0, 2]])
+		matrix2 = mat.Matrix(3, 2)
+		matrix2.setAt(0, 0, 1)
+		matrix2.setAt(0, 1, 1)
+		matrix2.setAt(1, 0, 1)
+		matrix2.setAt(1, 1, 1)
+		matrix2.setAt(2, 0, 1)
+		matrix2.setAt(2, 1, 1)
+		self.assertEqual((matrix2).data, [[1, 1, 1], [1, 1, 1]])
+		self.assertEqual((2 * matrix2).data, [[2, 2, 2], [2, 2, 2]])
+		self.assertEqual((matrix * matrix2).data, [[1, 1, 1], [1, 1, 1]])
+		self.assertEqual((2 * matrix * matrix2).data, [[2, 2, 2], [2, 2, 2]])
+		
+		matrix3 = mat.Matrix(2, 2)
+		matrix3.setAt(0, 0, 1)
+		matrix3.setAt(1, 0, 2)
+		matrix3.setAt(0, 1, 0)
+		matrix3.setAt(1, 1, 3)
+		self.assertEqual((matrix3 * matrix2).data, [[3, 3, 3], [3, 3, 3]])
 	
 if __name__ == '__main__':
     unittest.main()
