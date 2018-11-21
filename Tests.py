@@ -3,6 +3,7 @@ import unittest
 import BisectionAlgorithm as ba
 import NewtonRepson as nr
 import SecantAlgorithm as sc
+import Functions as fun
 
 class Test(unittest.TestCase):
 	def test_bisection(self):
@@ -43,6 +44,37 @@ class Test(unittest.TestCase):
 		self.assertEqual(sc.findRoots(lambda x : x**2 - 25, 0, 10), 5)
 		self.assertEqual(sc.findRoots(lambda x : x**2 - 25, -10, 3), -5)
 		self.assertEqual(sc.findRoots(lambda x : x**2 - 25, 3, 10), 5)
+	
+	def test_fun(self):
+		self.assertEqual(fun.evaluateFunction([],  0), 0)
+		self.assertEqual(fun.evaluateFunction([0], 0), 0)
+		self.assertEqual(fun.evaluateFunction([1], 0), 1)
+		self.assertEqual(fun.evaluateFunction([1], 5), 1)
+		self.assertEqual(fun.evaluateFunction([2], 5), 2)
+		self.assertEqual(fun.evaluateFunction([0, 0], 5), 0)
+		self.assertEqual(fun.evaluateFunction([0, 1], 5), 5)
+		self.assertEqual(fun.evaluateFunction([0, 2], 5), 10)
+		self.assertEqual(fun.evaluateFunction([1, 2], 5), 11)
+		
+		self.assertEqual(fun.findDerivativeCoefficients([]), [])
+		self.assertEqual(fun.findDerivativeCoefficients([1]), [])
+		self.assertEqual(fun.findDerivativeCoefficients([5]), [])
+		self.assertEqual(fun.findDerivativeCoefficients([0, 1]), [1])
+		self.assertEqual(fun.findDerivativeCoefficients([5, 1]), [1])
+		self.assertEqual(fun.findDerivativeCoefficients([0, 3]), [3])
+		self.assertEqual(fun.findDerivativeCoefficients([5, 3]), [3])
+		self.assertEqual(fun.findDerivativeCoefficients([5, 3, 1]), [3, 2])
+		self.assertEqual(fun.findDerivativeCoefficients([5, 3, 5]), [3, 10])
+		self.assertEqual(fun.findDerivativeCoefficients([5, 3, 5, 1]), [3, 10, 3])
+		
+		self.assertEqual(fun.coefficientsToFunction([0])(0), 0)
+		self.assertEqual(fun.coefficientsToFunction([1])(0), 1)
+		self.assertEqual(fun.coefficientsToFunction([1])(5), 1)
+		self.assertEqual(fun.coefficientsToFunction([2])(5), 2)
+		self.assertEqual(fun.coefficientsToFunction([0, 0])(5), 0)
+		self.assertEqual(fun.coefficientsToFunction([0, 1])(5), 5)
+		self.assertEqual(fun.coefficientsToFunction([0, 2])(5), 10)
+		self.assertEqual(fun.coefficientsToFunction([1, 2])(5), 11)
 	
 if __name__ == '__main__':
     unittest.main()
