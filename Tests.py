@@ -106,6 +106,8 @@ class Test(unittest.TestCase):
 		matrix3.setAt(0, 1, 0)
 		matrix3.setAt(1, 1, 3)
 		self.assertEqual((matrix3 * matrix2).data, [[3, 3, 3], [3, 3, 3]])
+		
+		self.assertEqual((matrix3 + matrix).data, [[2, 2], [0, 4]])
 	
 if __name__ == '__main__':
     unittest.main()

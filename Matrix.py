@@ -51,5 +51,17 @@ class Matrix:
 			return other.__mul__(self)
 		raise ValueError("matrix multiplication not by matrix or scalar")
 	
+	def __add__(self, other):
+		if type(other) == Matrix:
+			if self.columns != other.columns or self.rows != other.rows:
+				raise ValueError("incompatible matrices")
+			mat = Matrix(self.columns, self.rows)
+			for i in range(self.rows):
+				for j in range(self.columns):
+					mat.setAt(j, i, self[i][j] + other[i][j])
+			return mat
+			
+		raise ValueError("addition supports only matrices")
+	
 	def setAt(self, column, row, value):
 		self.data[row][column] = value
