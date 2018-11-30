@@ -12,7 +12,7 @@ def Norma(A):
             temp_sum += abs(A[i][j])
     return sum
 
-def invert_metrix(A):
+def invert_matrix(A):
 
     try:
         return linalg.inv(A)
@@ -21,7 +21,7 @@ def invert_metrix(A):
 
 
 def cond(A):
-    return Norma(A)* Norma(invert_metrix(A))
+    return Norma(A)* Norma(invert_matrix(A))
 
 def gauss(A):
 
@@ -71,6 +71,6 @@ if __name__ == "__main__":
     print(Norma(array([[1.01, 0.99, -2], [0.99, 1, 2.01], [0, -1, 2]])))
 
     a = array([[1.01, 0.99, -2], [0.99, 1, 2.01], [0, -1, 2]])
-    print(invert_metrix(a))
+    print(invert_matrix(a))
     print(cond(a))
     exit()
