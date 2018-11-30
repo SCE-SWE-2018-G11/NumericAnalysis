@@ -1,6 +1,28 @@
 import scipy
-import numpy
-from LU2 import L, U
+from scipy import linalg, array
+from numpy import matmul
+
+def Norma(A):
+    sum = 0
+    temp_sum = 0
+    for i in range (len(A)):
+        if temp_sum >= sum:
+            sum = temp_sum
+        temp_sum=0
+        for j in range (len(A)):
+            temp_sum += abs(A[i][j])
+    return sum
+
+def invert_metrix(A):
+
+    try:
+        return linalg.inv(A)
+    except Exception as e:
+        return 'Not inverted!'
+
+
+def cond(A):
+    return Norma(A)* Norma(invert_metrix(A))
 
 def gauss(A):
 
@@ -33,7 +55,8 @@ def gauss(A):
     # Solve equation Ax=b for an upper triangular matrix A
     x = [0 for i in range(n)]
     for i in range(n-1, -1, -1):
-        x[i] = A[i][n]/A[i][i]
+        # Round - approximation
+        x[i] = round(A[i][n]/A[i][i],2)
         for k in range(i-1, -1, -1):
             A[k][n] -= A[k][i] * x[i]
     return x
@@ -42,9 +65,13 @@ def gauss(A):
 if __name__ == "__main__":
 
     # Array A is with the final vector added - b
-    A = scipy.array([[1 / 2, 1 / 3, 1 / 4, 0.95], [1 / 3, 1 / 4, 1 / 5, 0.67], [1 / 4, 1 / 5, 1 / 6, 0.52]])
+    A = scipy.array([[-1.41, 2, 0, 1], [1, -1.41, 1, 1], [0, 2, -1.41, 1]])
 
-    # Supposed to return X = [1.2, 0.6, 0.6]
+    # Supposed to return X = [1.69, 1.69, 1.69]
     print(gauss(A))
+    print(Norma(array([[1.01, 0.99, -2], [0.99, 1, 2.01], [0, -1, 2]])))
 
+    a = array([[1.01, 0.99, -2], [0.99, 1, 2.01], [0, -1, 2]])
+    print(invert_metrix(a))
+    print(cond(a))
     exit()
