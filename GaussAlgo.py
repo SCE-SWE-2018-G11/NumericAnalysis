@@ -1,5 +1,6 @@
 import scipy
 from scipy import linalg, array
+from numpy import matmul
 
 def Norma(A):
     sum = 0
@@ -16,8 +17,12 @@ def invert_metrix(A):
 
     try:
         return linalg.inv(A)
-    except ValueError as e:
+    except Exception as e:
         return 'Not inverted!'
+
+
+def cond(A):
+    return Norma(A)* Norma(invert_metrix(A))
 
 def gauss(A):
 
@@ -66,7 +71,7 @@ if __name__ == "__main__":
     print(gauss(A))
     print(Norma(array([[1.01, 0.99, -2], [0.99, 1, 2.01], [0, -1, 2]])))
 
-    a = array([[1., 2., -1., 0.], [0., 5., 3., 0.], [-2., 0., 0., 4.], [0., 6., -4., -3.]])
+    a = array([[1.01, 0.99, -2], [0.99, 1, 2.01], [0, -1, 2]])
     print(invert_metrix(a))
-
+    print(cond(a))
     exit()
