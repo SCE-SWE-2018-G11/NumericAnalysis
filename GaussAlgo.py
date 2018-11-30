@@ -1,6 +1,5 @@
 import scipy
 from scipy import linalg, array
-from numpy import matmul
 
 def Norma(A):
     sum = 0
