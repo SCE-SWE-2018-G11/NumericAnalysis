@@ -1,7 +1,9 @@
 import math
+import GaussAlgo as ga
+import numpy
 
 area_size = 4
-grid_resolution = 4 # N
+grid_resolution = 2 # N
 radiation_buildup_factor = 1 # k
 measurement_height = 10 # h
 monitor_proportion_coefficient = 1 # c
@@ -10,7 +12,7 @@ measurements_vector = [0, 0, 0, 0] # M
 
 def calculateRadioactivity(heli_x, heli_y):
     def calculateDistance(point_x, point_y):
-        return math.sqrt((heli_x - point_x) ** 2 + (heli_y, point_y) ** 2 + measurement_height ** 2)
+        return math.sqrt((heli_x - point_x) ** 2 + (heli_y - point_y) ** 2 + measurement_height ** 2)
 
     radioactivity = 0
     for i in range(grid_resolution):
@@ -22,7 +24,7 @@ def calculateRadioactivity(heli_x, heli_y):
     return radioactivity
 
 def calculateCoefficientsMatrix():
-    coefficients_matrix = []# D
+    coefficients_matrix = [] # D
     for i in range(grid_resolution):
         vec = []
         for j in range(grid_resolution):
@@ -34,7 +36,7 @@ def calculateRadioactiveIsotopes(measurements):
     coefficients_matrix = calculateCoefficientsMatrix() # D
     # TODO: Check if matrix is invertible
     # TODO: If not, calculate somehow else (gauss elim?)
-    inverted = invertMatrix(coefficients_matrix)
-    return inverted * measurements
+    inverted = ga.invert_matrix(coefficients_matrix)
+    return numpy.matmul(inverted, measurements)
 
 calculateRadioactiveIsotopes(measurements_vector)
