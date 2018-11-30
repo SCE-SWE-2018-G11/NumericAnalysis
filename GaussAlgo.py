@@ -51,7 +51,7 @@ def gauss(A):
     x = [0 for i in range(n)]
     for i in range(n-1, -1, -1):
         # Round - approximation
-        x[i] = round(A[i][n]/A[i][i],2)
+        x[i] = round(A[i][n]/A[i][i],3)
         for k in range(i-1, -1, -1):
             A[k][n] -= A[k][i] * x[i]
     return x
@@ -60,9 +60,8 @@ def gauss(A):
 if __name__ == "__main__":
 
     # Array A is with the final vector added - b
-    A = scipy.array([[-1.41, 2, 0, 1], [1, -1.41, 1, 1], [0, 2, -1.41, 1]])
+    A = scipy.array([[1, 0, 0, 1], [0, 1, 0, 1], [0, -0.035, 1, 1]])
 
-    # Supposed to return X = [1.69, 1.69, 1.69]
     print(gauss(A))
     print(Norma(array([[1.01, 0.99, -2], [0.99, 1, 2.01], [0, -1, 2]])))
 
