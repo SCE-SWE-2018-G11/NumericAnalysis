@@ -5,6 +5,8 @@ import NewtonRepson as nr
 import SecantAlgorithm as sc
 import Functions as fun
 import Matrix as mat
+import Jacobi as j
+import numpy as np
 
 class Test(unittest.TestCase):
 	def test_bisection(self):
@@ -109,5 +111,50 @@ class Test(unittest.TestCase):
 		
 		self.assertEqual((matrix3 + matrix).data, [[2, 2], [0, 4]])
 	
+	def test_jacobi(self):
+		A1 = np.array([[10., -1., 2., 0.],
+					[-1., 11., -1., 3.],
+					[2., -1., 10., -1.],
+					[0.0, 3., -1., 8.]])
+		b1 = np.array([6., 25., -11., 15.])
+		x1 = np.array([1., 2., -1., 1.])
+		np.testing.assert_almost_equal(j.jacobi(A1, b1), x1)
+
+		A2 = np.array([
+			[1., 0., 0.],
+			[0., 1., 0.],
+			[0., -0.035, 1.]
+		])
+		b2 = np.array([1., 1., 1.])
+		x2 = [1, 1, 1.035]
+		np.testing.assert_almost_equal(j.jacobi(A2, b2), x2)
+
+		A3 = np.array([
+			[2., 1.],
+			[5., 7.]
+		])
+		b3 = np.array([11., 13.])
+		x3 = [7.1111111, -3.2222222]
+		np.testing.assert_almost_equal(j.jacobi(A3, b3), x3)
+
+		A4 = np.array([
+			[1., 0., 0.],
+			[0., 1., 0.],
+			[0., 0., 1.]
+		])
+		b4 = np.array([1., 1., 1.])
+		x4 = [1, 1, 1]
+		np.testing.assert_almost_equal(j.jacobi(A4, b4), x4)
+
+		A5 = np.array([
+			[2., -1., 0.],
+			[-0.5, 3., -2.],
+			[2., 2., 4.]
+		])
+		b5 = np.array([1., 1., 1.])
+		x5 = [0.64705882, 0.29411765, -0.22058824]
+		np.testing.assert_almost_equal(j.jacobi(A5, b5), x5)
+
+
 if __name__ == '__main__':
     unittest.main()
