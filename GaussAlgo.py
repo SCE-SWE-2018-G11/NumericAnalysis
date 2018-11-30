@@ -13,11 +13,7 @@ def Norma(A):
     return sum
 
 def invert_matrix(A):
-
-    try:
-        return linalg.inv(A)
-    except Exception as e:
-        return 'Not inverted!'
+    return linalg.inv(A)
 
 
 def cond(A):
