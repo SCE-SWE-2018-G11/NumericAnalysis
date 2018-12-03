@@ -56,16 +56,12 @@ def gauss(A):
             A[k][n] -= A[k][i] * x[i]
     return x
 
+def interpulation(gausssolution,x):
+    return gausssolution[0]*(x**2) + gausssolution[1]*x + gausssolution[2]
 
-if __name__ == "__main__":
+A = scipy.array([[4, 2, 1, -3.5], [9, 3, 1, 1.25], [36, 6, 1, 4.1]])
+print(interpulation(gauss(A),3.83))
 
-    # Array A is with the final vector added - b
-    A = scipy.array([[1, 0, 0, 1], [0, 1, 0, 1], [0, -0.035, 1, 1]])
 
-    print(gauss(A))
-    print(Norma(array([[1.01, 0.99, -2], [0.99, 1, 2.01], [0, -1, 2]])))
 
-    a = array([[1.01, 0.99, -2], [0.99, 1, 2.01], [0, -1, 2]])
-    print(invert_matrix(a))
-    print(cond(a))
-    exit()
+

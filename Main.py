@@ -4,11 +4,11 @@ import numpy
 import scipy
 
 AREA_SIZE = 4
-GRID_RESOLUTION = 2
-HELICOPTER_HEIGHT = 10
-MONITOR_PROPORTION_COEF = 1
-RADIATION_ABSORPTION_COEF = 1
-RADIATION_BUILDUP_FAC = 1
+GRID_RESOLUTION = 2 # N
+HELICOPTER_HEIGHT = 150 # h
+MONITOR_PROPORTION_COEF = 1 # c
+RADIATION_ABSORPTION_COEF = 1 # mu
+RADIATION_BUILDUP_FAC = 1 # k
 
 def distance(x1, y1, x2, y2):
     return math.sqrt((x1 - x2)**2 + (y1 - y2)**2 + HELICOPTER_HEIGHT**2)
@@ -65,3 +65,7 @@ def calculateContaminationVector(measured_values_vector):
         return ga.gauss(scipysh)
 
 print(calculateContaminationVector([1, 1]))
+
+'Caluclate distances'
+print("R(1,1) =", distance(-50,50, 50,50))
+print("R(1,2) =", distance())
