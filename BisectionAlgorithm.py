@@ -19,7 +19,7 @@ def findRoots(f, range_start, range_end, acceptable_error = 0):
 	return m
 
 print("Final c = ", findRoots(lambda x:x**3+2*x**2+10*x-20, 0, 5, 0)/2,"\n")
-print("Final mu (1) = ", findRoots(lambda x:math.exp(x)-3*x**2, 0, 5, 0.001)/1000, "\n")
-print("Final mu (2) = ", findRoots(lambda x:math.exp(x)-3*x**2, 2, 5, 0.001)/1000)
+print("Final mu (1) = ", findRoots(lambda x:math.exp(x)-3*x**2, 0, 5, 0.000001), "\n")
+print("Final mu (2) = ", findRoots(lambda x:math.exp(x)-3*x**2, 2, 5, 0.000001))
 
 

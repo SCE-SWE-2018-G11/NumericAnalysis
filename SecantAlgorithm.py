@@ -12,6 +12,6 @@ def findRoots(f, range_start, range_end, iterations=10):
 		range_end = x_temp
 	return range_end
 
-print("Final c = " , findRoots(lambda x:x**3+2*x**2+10*x-20, 0, 5, 10), "\n")
-print("Final mu (1) = " , findRoots(lambda x:math.exp(x)-3*x**2, 2, 5, 10)/1000, "\n")
-print("Final mu (2) = ", findRoots(lambda x:math.exp(x)-3*x**2, 4, 5, 10)/1000)
+print("Final c = " , findRoots(lambda x:x**3+2*x**2+10*x-20, 0, 5, 20), "\n")
+print("Final mu (1) = " , findRoots(lambda x:math.exp(x)-3*x**2, 2, 5, 20), "\n")
+print("Final mu (2) = ", findRoots(lambda x:math.exp(x)-3*x**2, 4, 5, 20))
