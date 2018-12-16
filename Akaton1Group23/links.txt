@@ -1,0 +1,11 @@
+bisection:
+
+http://code.activestate.com/recipes/578417-bisection-method-in-python/
+
+secant:
+
+http://code.activestate.com/recipes/578420-secant-method-of-solving-equtions-in-python/
+
+gauss-seidel:
+
+https://austingwalters.com/gauss-seidel-method/
