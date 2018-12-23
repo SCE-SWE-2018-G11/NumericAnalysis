@@ -19,7 +19,7 @@ x = 2.5
 print('f({0}) = {1}'.format(x , f(x)))
 
 # Show the function on the screen
-arr_x_values = range(0, 15)
+arr_x_values = range(0, 1)
 
 p.plot(arr_x_values, f(arr_x_values).astype(np.int))
 p.show()
