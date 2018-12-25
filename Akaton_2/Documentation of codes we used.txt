@@ -19,11 +19,11 @@ build-in funcction / code: scipy.interpolation._cubic
 origin: https://docs.scipy.org/doc/scipy/reference/generated/scipy.interpolate.CubicSpline.html
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Algo:
+Algo:trapezodial_rule
 
-build-in funcction / code: 
+build-in funcction / code: np.trapz
 
-origin: 
+origin: https://codereview.stackexchange.com/questions/194184/definite-integral-approximation-using-the-trapezoidal-method
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Algo:
