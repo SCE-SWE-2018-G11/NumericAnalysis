@@ -18,8 +18,8 @@ def neville(datax, datay, x):
                 p[i] = ((x-datax[i+k])*p[i]+ \
                         (datax[i]-x)*p[i+1])/ \
                         (datax[i]-datax[i+k])
-            print('P({0}, {1}) = {2}'.format(i, k, p[i]))
-    return ('Result => P({0}, {1}) = {2}'.format(i, k, p[0]))
+            print('P{0}{1} = {2}'.format(i, k, p[i]))
+    return ('Result => P{0}{1}({3}) = {2}'.format(i, k, p[0],x))
 
 p = neville([1.0, 2.0, 6.0], [1.0, -1.0, 4.0], 4)
 print(p)
