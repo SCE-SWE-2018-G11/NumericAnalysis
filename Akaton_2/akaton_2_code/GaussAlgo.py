@@ -19,7 +19,8 @@ def invert_matrix(A):
 def cond(A):
     return Norma(A)* Norma(invert_matrix(A))
 
-def gauss(A):
+def gauss(A, rounding_precision = 3):
+    A = list(list(x) for x in A) # Convert to list in case we're given tuple
 
     n = len(A)
 
@@ -51,7 +52,7 @@ def gauss(A):
     x = [0 for i in range(n)]
     for i in range(n-1, -1, -1):
         # Round - approximation
-        x[i] = round(A[i][n]/A[i][i],3)
+        x[i] = round(A[i][n]/A[i][i],rounding_precision)
         for k in range(i-1, -1, -1):
             A[k][n] -= A[k][i] * x[i]
     return x
