@@ -11,7 +11,7 @@ Difference between last two estimates of the integral.
 """
 
 f = lambda x: -x**2 + 10*x - 16
-result = integrate.quadrature(f, 2.0, 8.0)
+result = integrate.quadrature(lambda x: 1/(1 + x**5), 0, 3)
 
 print(result)
 

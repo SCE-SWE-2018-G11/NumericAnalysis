@@ -9,4 +9,4 @@ def calculate_area(f, a, b, n):
     print("number of intervals: ", n+1)
     return np.trapz(f(x), x)
 
-print("S = ", calculate_area(lambda x: -x**2 + 10*x - 16, 2, 8, 6))
+print("S = ", calculate_area(lambda x: 1/(1+x**5), 0, 3, 5))

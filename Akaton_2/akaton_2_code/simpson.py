@@ -1,6 +1,9 @@
 from scipy import integrate
 
 # https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.simps.html
-# 1st argument is y values, 2nd argument is x values
-print(integrate.simps([0, 5, 8, 9, 8, 5, 0], [2, 3, 4, 5, 6, 7, 8]))
-# should be 35.0
+def simpson(y, x):
+    return integrate.simps(y, x)
+
+xp = [0, 0.5, 1, 3/2, 2, 5/2, 3]
+yp = [1, 32/33, 1/2, 32/275, 1/33, 32/3157, 1/244]
+print("Integral:", simpson(yp, xp))
