@@ -56,11 +56,11 @@ def gauss(A):
             A[k][n] -= A[k][i] * x[i]
     return x
 
-def interpulation(gausssolution,x):
+def interpulation(gausssolution, x):
     return gausssolution[0]*(x**2) + gausssolution[1]*x + gausssolution[2]
 
 A = scipy.array([[4, 2, 1, -3.5], [9, 3, 1, 1.25], [36, 6, 1, 4.1]])
-print(interpulation(gauss(A),3.83))
+print(interpulation(gauss(A), 3.83))
 
 
 

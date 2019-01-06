@@ -1,21 +1,16 @@
+import scipy
 import numpy as np
 
-def jacobi(A, b, ITERATION_LIMIT = 1000):
-    """
-        https://en.wikipedia.org/wiki/Jacobi_method
-    """
-    x = np.zeros_like(b)
-    for it_count in range(ITERATION_LIMIT):
-        x_new = np.zeros_like(x)
 
-        for i in range(A.shape[0]):
-            s1 = np.dot(A[i, :i], x[:i])
-            s2 = np.dot(A[i, i + 1:], x[i + 1:])
-            x_new[i] = (b[i] - s1 - s2) / A[i, i]
+def Jacobi(A, b, x, n):
+    D = np.diag(A)
+    R = A - np.diagflat(D)
 
-        if np.allclose(x, x_new, atol=1e-10, rtol=0.):
-            break
-
-        x = x_new
-    # error = np.dot(A, x) - b
+    for i in range(n):
+        x = (b - np.dot(R, x)) / D
+        print("Iteration {0}: {1}".format(i, x))
     return x
+
+Jacobi(np.array([[5.0, -1.0, 2.0], [3.0, 8.0, -2.0],
+                        [1.0, 1.0, 4.0]]), [12, -25, 6.0], np.array([0.0, 0.0, 0.0]), 22)
+
