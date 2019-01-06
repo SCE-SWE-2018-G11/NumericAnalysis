@@ -1,7 +1,6 @@
 import GaussAlgo
 import Functions
 
-
 def CubicSplineDerivatives(x_values, y_values, first_derivative, last_derivative):
     """
         Solves for the vector of derivatives of the spline function.
@@ -55,7 +54,7 @@ def CubicSpline(x_values, y_values, derivative_at_x1, derivative_at_xn):
         Performs cubic-spline interpolation of unknown function, described by x_values and y_values.
         Parameters:
             x_values - sorted array of floats
-            y_values - array of floats 
+            y_values - array of floats
             derivative_at_x1 - derivative of function at the 1st x_value
             derivative_at_xn - derivative of function at the last x_value
         Returns:
@@ -85,7 +84,8 @@ def CubicSpline(x_values, y_values, derivative_at_x1, derivative_at_xn):
 
         coefficients = (
             # Formula for S_i taken from presentation slide 11, and ran through WolframAlpha
-                        (x_values[i] * (x_values[i] ** 2 * derivatives[i + 1] - 6 * y_values[i + 1] - derivatives[
+
+            (x_values[i] * (x_values[i] ** 2 * derivatives[i + 1] - 6 * y_values[i + 1] - derivatives[
                 i + 1] * interval_size ** 2) + x_values[i + 1] * (
                          derivatives[i] * interval_size ** 2 + 6 * y_values[i] - x_values[i + 1] ** 2 * derivatives[
                      i])) / (6 * interval_size),
@@ -116,15 +116,14 @@ def Interpolate(x_values, y_values, derivative_at_x1, derivative_at_xn, desired_
             return Functions.evaluateFunction(funcs[i], desired_x)
     raise Exception("desired_x out of range")
 
+# Example - some points in an array
+points_table = [(2, -3.6), (3, 1.25), (6, 4.1)]
+
 
 def InterpolateNatural(x_values, y_values, desired_x):
     return Interpolate(x_values, y_values, 0, 0, desired_x)
 
-# Example - some points in an array
-points_table = [(0.2, 0.198669), (0.3, 0.295520), (0.4, 0.389418), (0.5, 0.479426)]
 
-# We choose 3 points from the table, so that the function f(x) will be in order 2
-xp = [points_table[0][0], points_table[1][0], points_table[2][0]]
-yp = [points_table[0][1], points_table[1][1], points_table[2][1]]
+print(InterpolateNatural([2, 3, 6], [(-3.6), 1.25, 4.1], 4))
 
-print(Interpolate(xp, yp,))
+

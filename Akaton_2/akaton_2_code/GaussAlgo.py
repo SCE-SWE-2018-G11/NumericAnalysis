@@ -4,7 +4,7 @@ from scipy import linalg, array
 def Norma(A):
     sum = 0
     temp_sum = 0
-    for i in range (len(A)):
+    for i in range(len(A)):
         if temp_sum >= sum:
             sum = temp_sum
         temp_sum=0
@@ -19,7 +19,8 @@ def invert_matrix(A):
 def cond(A):
     return Norma(A)* Norma(invert_matrix(A))
 
-def gauss(A):
+def gauss(A, rounding_precision = 3):
+    A = list(list(x) for x in A) # Convert to list in case we're given tuple
 
     n = len(A)
 
@@ -51,7 +52,7 @@ def gauss(A):
     x = [0 for i in range(n)]
     for i in range(n-1, -1, -1):
         # Round - approximation
-        x[i] = round(A[i][n]/A[i][i],3)
+        x[i] = round(A[i][n]/A[i][i],rounding_precision)
         for k in range(i-1, -1, -1):
             A[k][n] -= A[k][i] * x[i]
     return x
@@ -59,10 +60,5 @@ def gauss(A):
 def interpulation(gausssolution,x):
     return gausssolution[0]*(x**2) + gausssolution[1]*x + gausssolution[2]
 
-A = scipy.array([[5.0, -1.0, 2.0, 12], [3.0, 8.0, -2.0, -25], [1.0, 1.0, 4.0, 6]])
-print(gauss(A))
+#A = scipy.array([[4, 2, 1, -3.5], [9, 3, 1, 1.25], [36, 6, 1, 4.1]])
 #print(interpulation(gauss(A),3.83))
-
-
-
-
