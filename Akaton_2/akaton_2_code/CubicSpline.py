@@ -116,6 +116,7 @@ def Interpolate(x_values, y_values, derivative_at_x1, derivative_at_xn, desired_
             return Functions.evaluateFunction(funcs[i], desired_x)
     raise Exception("desired_x out of range")
 
+
 # Example - some points in an array
 points_table = [(2, -3.6), (3, 1.25), (6, 4.1)]
 
@@ -124,6 +125,10 @@ def InterpolateNatural(x_values, y_values, desired_x):
     return Interpolate(x_values, y_values, 0, 0, desired_x)
 
 
-print(InterpolateNatural([2, 3, 6], [(-3.6), 1.25, 4.1], 4))
+# x values, y values, the x we want to calculate its y
+print(InterpolateNatural([1, 2, 3, 4, 5], [1, 2, 1, 1.5, 1], 5))
+
+# the polynomial of each 2 dots
+print(CubicSpline([1, 2, 3, 4, 5], [1, 2, 1, 1.5, 1], 0, 0))
 
 
